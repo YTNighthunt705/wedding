@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Todd & Amy Countdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: url('https://cdn.wallpapersafari.com/56/64/zPMUnr.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff8f0;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: relative;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-top: 60px;
+      margin-bottom: 10px;
+      color: #fffbe6;
+      text-shadow: 0 0 10px #000;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 30px;
+      font-weight: normal;
+      color: #ffe6cc;
+      text-shadow: 0 0 6px #000;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: #fff;
+      text-shadow: 0 0 8px #000;
+    }
+
+    .share-link {
+      width: 90%;
+      max-width: 400px;
+      margin: 30px auto;
+      padding: 15px;
+      background-color: #1877f2;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .share-link img {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+    }
+
+    .share-link a {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .share-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Todd Kemper & Amy Woodard</h1>
+  <h2>Countdown to November 15th, 2025 — 4:00 PM CST<br>Greenup VFW · 198 S Mill St</h2>
+  <div id="countdown">Loading...</div>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/04/04/audio_9d3b3b1f2e.mp3?filename=acoustic-guitar-romantic-145038.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="share-link">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logo_de_Facebook.png" alt="Facebook Logo" />
+    <a href="https://www.facebook.com/share/1JLmpnYwxL/?mibextid=wwXIfr" target="_blank">
+      Todd and Amy's Wedding Reception
+    </a>
+  </div>
+
+  <script>
+    const targetDate = new Date('November 15, 2025 16:00:00 GMT-0600');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = Math.floor((targetDate - now) / 1000);
+
+      if (diff <= 0) {
+        document.getElementById('countdown').textContent = "It's time 💖";
+        return;
+      }
+
+      const days = Math.floor(diff / (3600 * 24));
+      const hours = Math.floor((diff % (3600 * 24)) / 3600);
+      const minutes = Math.floor((diff % 3600) / 60);
+      const seconds = diff % 60;
+
+      document.getElementById('countdown').textContent =
+        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
